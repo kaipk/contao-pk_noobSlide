@@ -1,0 +1,12 @@
+=============================
+Contao Extension "pk_noobSlide"
+=============================
+
+Version 1.1.0 stable (2012-02-22)
+---------------------------------
+- Code rewritten
+- Preview Mode
+- Section Mode
+- News Integration
+- MooSwipe Integration
+- Duration option for fading
