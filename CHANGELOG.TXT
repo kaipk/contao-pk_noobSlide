@@ -2,7 +2,7 @@
 Contao Extension "pk_noobSlide"
 =============================
 
-Version 1.1.0 stable (2012-02-22)
+Version 1.1.1 stable (2012-02-22)
 ---------------------------------
 - Code rewritten
 - Preview Mode
@@ -11,7 +11,7 @@ Version 1.1.0 stable (2012-02-22)
 - MooSwipe Integration
 - Duration option for fading
 
-Version 1.1.1 stable (2012-06-15)
+Version 1.1.2 stable (2012-06-15)
 ---------------------------------
 - if the slider has NOT finish his cycle the control buttons not working right.
 - alias bug: standardize alias now
