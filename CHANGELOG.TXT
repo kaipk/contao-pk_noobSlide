@@ -10,3 +10,7 @@ Version 1.1.0 stable (2012-02-22)
 - News Integration
 - MooSwipe Integration
 - Duration option for fading
+
+Version 1.1.1 stable (2012-06-15)
+---------------------------------
+- if the slider has NOT finish his cycle the control buttons not working right.

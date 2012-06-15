@@ -224,7 +224,7 @@ var noobSlide = new Class({
 			if(noFx){
 				this.fx.cancel().set((this.size*-this.currentIndex)+'px');
 			}else{
-				this.fx.start(this.size*-this.currentIndex);
+				this.fx.cancel().start(this.size*-this.currentIndex);
 			}
 			if(manual && this.autoPlay){
 				this.play(this.interval,'next',true);
