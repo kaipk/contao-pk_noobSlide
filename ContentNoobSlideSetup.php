@@ -58,11 +58,13 @@ class ContentNoobSlideSetup extends ContentElement
 
 		$objArticle = $this->Database->execute("SELECT a.*, COUNT(c.id) AS sections FROM tl_content c LEFT JOIN tl_article a ON c.pid=a.id WHERE c.type='noobslide_setup' AND c.pid={$this->pid}" . ($blnStartStop ? " AND (c.start='' OR c.start<$time) AND (c.stop='' OR c.stop>$time)" : '') . " GROUP BY c.pid");
 		
+		$objTotal = $this->Database->execute("SELECT COUNT(*) as total FROM tl_content WHERE type = 'noobslide_section' AND pid=$this->pid".($blnStartStop ? " AND (start='' OR start<$time) AND (stop='' OR stop>$time)" : ''));
+		
 		$cssID = deserialize($objArticle->cssID, true);
 		$GLOBALS['NOOBSLIDE'][$this->pid]['id'] = $cssID[0] != '' ? $cssID[0] : standardize($objArticle->alias);
 		$GLOBALS['NOOBSLIDE'][$this->pid]['previews'] = 0;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['sections'] = 0;
-		$GLOBALS['NOOBSLIDE'][$this->pid]['total'] = (int)$objArticle->sections;
+		$GLOBALS['NOOBSLIDE'][$this->pid]['total'] = $objTotal->total;
 		
 		return parent::generate();
 	}
