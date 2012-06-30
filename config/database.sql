@@ -29,7 +29,8 @@ CREATE TABLE `tl_content` (
   `nSBackground` varchar(255) NOT NULL default '',
   `nSUrl` varchar(255) NOT NULL default '',
   `nSTarget` char(1) NOT NULL default '',
-  `nSNews` int(10) unsigned NOT NULL default '0'
+  `nSNews` int(10) unsigned NOT NULL default '0',
+  `nSMooSwipe` char(1) NOT NULL default '1',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

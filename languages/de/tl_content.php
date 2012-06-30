@@ -46,11 +46,12 @@ $GLOBALS['TL_LANG']['tl_content']['nSPlayAuto'] 			= array('Autoplay aktivieren'
 $GLOBALS['TL_LANG']['tl_content']['nSStartPoint'] 			= array('Startpunkt des Noobslide', 'Angabe des Startelements. (0 ist das erste Element)');
 $GLOBALS['TL_LANG']['tl_content']['nSEffectInterval'] 		= array('Einblendungsdauer', 'Angabe in Millisekunden.');
 $GLOBALS['TL_LANG']['tl_content']['nSEffectDuration'] 		= array('Effektdauer', 'Angabe in Millisekunden.');
-$GLOBALS['TL_LANG']['tl_content']['nSControls'] 			= array('Navigation aktivieren'); 
+$GLOBALS['TL_LANG']['tl_content']['nSControls'] 			= array('Navigation aktivieren', 'Navigation ein-/ausblenden'); 
 $GLOBALS['TL_LANG']['tl_content']['nSControlButtons'] 		= array('Abspielbuttons aktivieren', 'Zurückspielen, Anhalten, Abspielen'); 
 $GLOBALS['TL_LANG']['tl_content']['nSSideButtons'] 			= array('Vor- und Zurückbuttons aktivieren', 'Vorwärts, Zurück'); 
 $GLOBALS['TL_LANG']['tl_content']['nSBackground'] 			= array('Hintergrundbild','Jeder Abschnitt kann ein Hintergrundbild besitzen. Stellen Sie sicher, dass es geeignet für den Slider ist!');
 $GLOBALS['TL_LANG']['tl_content']['nSNews'] 				= array('Newsarchiv', 'Bitte wählen Sie ein Newsarchiv aus.');
+$GLOBALS['TL_LANG']['tl_content']['nSMooSwipe'] 			= array('Smartphone-Support', 'Wischgesten aktivieren (MooSwipe)');
 
 
 /**

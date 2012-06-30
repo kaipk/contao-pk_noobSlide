@@ -95,6 +95,7 @@ class ContentNoobSlideEnd extends ContentElement
 			$this->Template->previous = $GLOBALS['TL_LANG']['MSC']['previous'];
 			$this->Template->next = $GLOBALS['TL_LANG']['MSC']['next'];		
 			$this->Template->mode_src = $GLOBALS['NOOBSLIDE'][$this->pid]['mode'];
+			$this->Template->nSMooSwipe = $GLOBALS['NOOBSLIDE'][$this->pid]['nSMooSwipe'];
 			
 			switch( $GLOBALS['NOOBSLIDE'][$this->pid]['mode'] )
 			{

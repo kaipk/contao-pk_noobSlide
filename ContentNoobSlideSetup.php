@@ -72,9 +72,13 @@ class ContentNoobSlideSetup extends ContentElement
 	protected function compile()
 	{
 		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/html/class.noobSlide.packed.js';
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/html/class.MooSwipe.packed.js';
 		$GLOBALS['TL_CSS'][] = 'system/modules/pk_noobSlide/html/noobSlide.css';
 		
+		if($this->nSMooSwipe)
+		{
+			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/html/class.MooSwipe.packed.js';	
+		}
+			
 		$GLOBALS['NOOBSLIDE'][$this->pid]['mode'] = $this->nSMode;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['jsElements'] = '1,2,3,4';
 		$GLOBALS['NOOBSLIDE'][$this->pid]['startPoint'] = $this->nSStartPoint;
@@ -89,6 +93,7 @@ class ContentNoobSlideSetup extends ContentElement
 		$GLOBALS['NOOBSLIDE'][$this->pid]['noobHandlesId'] = $cssID[0] != '' ? $cssID[0] : $objArticle->alias;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['width'] = $this->nSElemWidth;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['height'] = $this->nSElemHeight;
+		$GLOBALS['NOOBSLIDE'][$this->pid]['nSMooSwipe'] = $this->nSMooSwipe ? true : false; 
 		
 		$this->Template->width = $this->nSElemWidth;
 		$this->Template->height = $this->nSElemHeight;

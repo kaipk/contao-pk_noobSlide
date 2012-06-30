@@ -62,7 +62,7 @@ window.addEvent('domready', function() {
  	});
 //walk to item witouth fx
 noobslide<?php echo $this->sliderId; ?>.walk(<?php echo $this->startPoint; ?>,false,true);
-
+<?php if($this->nSMooSwipe): ?>
 new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container'), {
 		onSwipeLeft: function() {
 			noobslide<?php echo $this->sliderId; ?>.next(this);
@@ -71,6 +71,7 @@ new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide
 			noobslide<?php echo $this->sliderId; ?>.previous(this);
 		}
 	});
+<?php endif; ?>	
 });
 //--><!]]>
 </script>
