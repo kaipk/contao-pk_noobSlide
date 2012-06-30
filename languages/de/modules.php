@@ -30,17 +30,7 @@
 
 
 /**
- * Content elements
- */ 
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_setup'] 		= 'ContentNoobSlideSetup';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_preview'] 	= 'ContentNoobSlidePreview';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_section'] 	= 'ContentNoobSlideSection';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_news'] 		= 'ContentNoobSlideNews';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_end'] 		= 'ContentNoobSlideEnd';
-
-
-/**
  * Front end modules
  */
-$GLOBALS['FE_MOD']['miscellaneous']['noobSlide_article']   = 'ModuleNoobSlideArticle';
+$GLOBALS['TL_LANG']['FMD']['noobSlide_article']        = array('Noobslider von Artikel','Mit diesem Modul können Sie den Noobslider von einem Artikel einfügen.');
 

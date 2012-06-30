@@ -27,20 +27,10 @@
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  * @version    $Id
  */
-
-
-/**
- * Content elements
- */ 
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_setup'] 		= 'ContentNoobSlideSetup';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_preview'] 	= 'ContentNoobSlidePreview';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_section'] 	= 'ContentNoobSlideSection';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_news'] 		= 'ContentNoobSlideNews';
-$GLOBALS['TL_CTE']['noobSlide']['noobSlide_end'] 		= 'ContentNoobSlideEnd';
-
+ 
 
 /**
- * Front end modules
+ * Fields
  */
-$GLOBALS['FE_MOD']['miscellaneous']['noobSlide_article']   = 'ModuleNoobSlideArticle';
+$GLOBALS['TL_LANG']['tl_module']['nSarticleAlias']	= array('Article', 'Please select an article where the slider is placed. ');
 

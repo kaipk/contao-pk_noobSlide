@@ -31,3 +31,12 @@ CREATE TABLE `tl_content` (
   `nSTarget` char(1) NOT NULL default '',
   `nSNews` int(10) unsigned NOT NULL default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- 
+-- Table `tl_module`
+-- 
+
+CREATE TABLE `tl_module` (
+  `nSarticleAlias` int(10) unsigned NOT NULL default '0',
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
