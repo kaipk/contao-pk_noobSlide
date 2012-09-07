@@ -15,3 +15,9 @@ Version 1.1.2 stable (2012-06-15)
 ---------------------------------
 - if the slider has NOT finish his cycle the control buttons not working right.
 - alias bug: standardize alias now
+
+Version 1.1.3 stable (2012-09-07)
+- include slider as module
+- mooswipe disable option
+- class first last in 1st preview element
+- add mousein/out behaviors for all slides

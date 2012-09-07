@@ -60,8 +60,17 @@ window.addEvent('domready', function() {
  		previewItems: $$('#<?php echo $this->articleId; ?> .ce_noobSlide_preview')
 <?php endif; ?>
  	});
-//walk to item witouth fx
-noobslide<?php echo $this->sliderId; ?>.walk(<?php echo $this->startPoint; ?>,false,true);
+ 	
+//add mousein/out behaviors for all slides
+document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container').addEvents({
+'mouseover':function(){
+noobslide<?php echo $this->sliderId; ?>.stop();
+},
+'mouseleave':function(){
+noobslide<?php echo $this->sliderId; ?>.play(<?php echo $this->interval; ?>,"next",false);
+}
+});
+ 	
 <?php if($this->nSMooSwipe): ?>
 new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container'), {
 		onSwipeLeft: function() {
