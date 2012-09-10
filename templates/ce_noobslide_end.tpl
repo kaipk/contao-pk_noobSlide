@@ -60,7 +60,7 @@ window.addEvent('domready', function() {
  		previewItems: $$('#<?php echo $this->articleId; ?> .ce_noobSlide_preview')
 <?php endif; ?>
  	});
- 	
+<?php if($this->nSMouseOver): ?> 	
 //add mousein/out behaviors for all slides
 document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container').addEvents({
 'mouseover':function(){
@@ -70,7 +70,7 @@ noobslide<?php echo $this->sliderId; ?>.stop();
 noobslide<?php echo $this->sliderId; ?>.play(<?php echo $this->interval; ?>,"next",false);
 }
 });
- 	
+<?php endif; ?> 	
 <?php if($this->nSMooSwipe): ?>
 new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container'), {
 		onSwipeLeft: function() {

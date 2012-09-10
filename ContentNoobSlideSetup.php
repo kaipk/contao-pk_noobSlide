@@ -93,7 +93,8 @@ class ContentNoobSlideSetup extends ContentElement
 		$GLOBALS['NOOBSLIDE'][$this->pid]['noobHandlesId'] = $cssID[0] != '' ? $cssID[0] : $objArticle->alias;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['width'] = $this->nSElemWidth;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['height'] = $this->nSElemHeight;
-		$GLOBALS['NOOBSLIDE'][$this->pid]['nSMooSwipe'] = $this->nSMooSwipe ? true : false; 
+		$GLOBALS['NOOBSLIDE'][$this->pid]['nSMooSwipe'] = $this->nSMooSwipe ? true : false;
+		$GLOBALS['NOOBSLIDE'][$this->pid]['nSMouseOver'] = $this->nSMouseOver ? true : false; 
 		
 		$this->Template->width = $this->nSElemWidth;
 		$this->Template->height = $this->nSElemHeight;

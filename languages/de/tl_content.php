@@ -52,6 +52,7 @@ $GLOBALS['TL_LANG']['tl_content']['nSSideButtons'] 			= array('Vor- und Zurückb
 $GLOBALS['TL_LANG']['tl_content']['nSBackground'] 			= array('Hintergrundbild','Jeder Abschnitt kann ein Hintergrundbild besitzen. Stellen Sie sicher, dass es geeignet für den Slider ist!');
 $GLOBALS['TL_LANG']['tl_content']['nSNews'] 				= array('Newsarchiv', 'Bitte wählen Sie ein Newsarchiv aus.');
 $GLOBALS['TL_LANG']['tl_content']['nSMooSwipe'] 			= array('Smartphone-Support', 'Wischgesten aktivieren (MooSwipe)');
+$GLOBALS['TL_LANG']['tl_content']['nSMouseOver'] 			= array('Mouseover/out aktivieren', 'bei Mouseover wird der Slider angehalten und beim Mouseout wird zum nächsten Element geslidet.');
 
 
 /**

@@ -51,7 +51,8 @@ $GLOBALS['TL_LANG']['tl_content']['nSControlButtons'] 		= array('Enable playback
 $GLOBALS['TL_LANG']['tl_content']['nSSideButtons'] 			= array('Enable button next - previous', 'Next Page, Previous Page'); 
 $GLOBALS['TL_LANG']['tl_content']['nSBackground'] 			= array('Background-Image','Each Section can contain a background-image.');
 $GLOBALS['TL_LANG']['tl_content']['nSNews'] 				= array('Newsarchive', 'Please select a news-archive.');
-
+$GLOBALS['TL_LANG']['tl_content']['nSMooSwipe'] 			= array('Smartphone-Support', 'Gives easy access to left and right swipe events for iOS and other touch devices.');
+$GLOBALS['TL_LANG']['tl_content']['nSMouseOver'] 			= array('Mouseover/out', 'on mouseover the slider stops. on mouseout the slider goes to the next element');
 
 /**
  * Legends
