@@ -16,11 +16,11 @@
  */
 ClassLoader::addClasses(array
 (
+	'ContentNoobSlidePreview' => 'system/modules/pk_noobSlide/ContentNoobSlidePreview.php',
 	'ContentNoobSlideEnd'     => 'system/modules/pk_noobSlide/ContentNoobSlideEnd.php',
 	'ContentNoobSlideNews'    => 'system/modules/pk_noobSlide/ContentNoobSlideNews.php',
-	'ContentNoobSlidePreview' => 'system/modules/pk_noobSlide/ContentNoobSlidePreview.php',
-	'ContentNoobSlideSection' => 'system/modules/pk_noobSlide/ContentNoobSlideSection.php',
 	'ContentNoobSlideSetup'   => 'system/modules/pk_noobSlide/ContentNoobSlideSetup.php',
+	'ContentNoobSlideSection' => 'system/modules/pk_noobSlide/ContentNoobSlideSection.php',
 	'ModuleNoobSlideArticle'  => 'system/modules/pk_noobSlide/ModuleNoobSlideArticle.php',
 ));
 

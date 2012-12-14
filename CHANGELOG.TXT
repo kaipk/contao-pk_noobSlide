@@ -22,5 +22,5 @@ Version 1.1.3 stable (2012-09-07)
 - class first last in 1st preview element
 - add mousein/out behaviors for all slides
 
-Version 1.1.4 stable (2012-09-21)
-- added Contao 3.X support
+Version 1.1.4 stable (2012-12-14)
+- Contao 3 support
