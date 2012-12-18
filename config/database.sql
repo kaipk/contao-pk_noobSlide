@@ -33,6 +33,7 @@ CREATE TABLE `tl_content` (
   `nSMooSwipe` char(1) NOT NULL default '1',
   `nSMouseOver` char(1) NOT NULL default '',
   `nSRandomStartPoint` char(1) NOT NULL default '',
+  `nSRandomSlides` char(1) NOT NULL default '',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

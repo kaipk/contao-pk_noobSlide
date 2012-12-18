@@ -83,6 +83,7 @@ class ContentNoobSlideSetup extends ContentElement
 		$GLOBALS['NOOBSLIDE'][$this->pid]['jsElements'] = '1,2,3,4';
 		$GLOBALS['NOOBSLIDE'][$this->pid]['startPoint'] = $this->nSStartPoint;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['randomStartPoint'] = $this->nSRandomStartPoint ? true : false;
+		$GLOBALS['NOOBSLIDE'][$this->pid]['randomSlides'] = $this->nSRandomSlides ? true : false;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['nSPlayAuto'] = $this->nSPlayAuto ? true : false;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['interval'] = $this->nSEffectInterval;
 		$GLOBALS['NOOBSLIDE'][$this->pid]['effectActive'] = $this->nSEffectsExtended;

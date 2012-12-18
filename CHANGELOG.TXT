@@ -25,4 +25,4 @@ Version 1.1.3 stable (2012-09-07)
 Version 1.1.4 stable (2012-12-14)
 - Contao 3 support
 - startPoint bug: starting point was not considered
-- feature: random starting point
+- feature: random starting point, random slides

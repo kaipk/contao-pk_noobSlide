@@ -25,6 +25,9 @@ window.addEvent('domready', function() {
 <?php if($this->randomStartPoint && $this->startPoint == 0): ?>
 		startItem: Math.floor((Math.random()*<?php echo $this->countElements; ?>)),
 <?php endif; ?>
+<?php if($this->randomSlides && !$this->randomStartPoint): ?>		
+		random: true,
+<?php endif; ?>
 <?php if($this->ControlButtons OR $this->SideButtons): ?>
 <?php if($this->SideButtons): ?>
 		nextBtn: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_next', html:'<span><?php echo $this->next; ?></span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after'),

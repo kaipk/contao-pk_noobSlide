@@ -11,6 +11,7 @@ Class
 	noobSlide (rev.03-11-10)
 	noobSlide Extention for Fading (rev. 23-10-08)
 	noobSlide Extension for Fading adapting for Contao CMS (rev. 28-06-2011)
+	noobslide Feature: random slides (rev. 18-12-2012)
 
 Arguments:
 	Parameters - see Parameters below
@@ -36,6 +37,7 @@ Parameters:
 	autoPlay: boolean | default: false
 	onWalk: event | pass arguments: currentItem, currentHandle | default: null
 	startItem: int | default: 0
+	random: false
 
 Properties:
 	box: dom element
@@ -100,6 +102,7 @@ var noobSlide = new Class({
 		this.handles = params.handles || null;
 		this.previewItems = params.previewItems || null;
 		this.fadeDuration = params.fadeDuration; 
+		this.random = params.random || false;
 		
 		if(this.handles){
 			this.addHandleButtons(this.handles, this.handle_event);
@@ -214,33 +217,48 @@ var noobSlide = new Class({
 		$clear(this._play);
 	},
 	walk: function(item,manual,noFx){
-		if(item!=this.currentIndex){
+		
+		if(this.random && !manual)
+		{
+			this.changeIndex();
+		}
+		
+		if(!this.random || manual)
+		{
 			this.currentIndex=item;
 			this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
 			this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
-			if(manual){
-				this.stop();
-			}
-			if(noFx){
-				this.fx.cancel().set((this.size*-this.currentIndex)+'px');
-			}else{
-				this.fx.cancel().start(this.size*-this.currentIndex);
-			}
-			if(manual && this.autoPlay){
-				this.play(this.interval,'next',true);
-			}
-			if(this.onWalk){
-				this.onWalk((this.items[this.currentIndex] || null), (this.handles && this.handles[this.currentIndex] ? this.handles[this.currentIndex] : null));
-			}
+		}
+		if(manual){
+			this.stop();
+		}
+		if(noFx){
+			this.fx.cancel().set((this.size*-this.currentIndex)+'px');
+		}else{
+			this.fx.cancel().start(this.size*-this.currentIndex);
+		}
+		if(manual && this.autoPlay){
+			this.play(this.interval,'next',true);
+		}
+		if(this.onWalk){
+			this.onWalk((this.items[this.currentIndex] || null), (this.handles && this.handles[this.currentIndex] ? this.handles[this.currentIndex] : null));
 		}
 	},
 	//Fading
 	fading: function(item,manual,noFx){
-		if(item!=this.currentIndex){
-			this.lastIndex=this.currentIndex;
-			this.currentIndex=item;
-			this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
-			this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
+			
+			if(this.random && !manual)
+			{
+				this.changeIndex();
+			}
+			
+			if(!this.random || manual)
+			{
+				this.lastIndex=this.currentIndex;
+				this.currentIndex=item;
+				this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
+				this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
+			}
 			
 			$$(this.divElements)[this.currentIndex].set('tween', {duration: (this.fadeDuration ? this.fadeDuration : 500)});
 			
@@ -259,6 +277,29 @@ var noobSlide = new Class({
 			if(this.onWalk){
 				this.onWalk((this.items[this.currentIndex] || null), (this.handles && this.handles[this.currentIndex] ? this.handles[this.currentIndex] : null));
 			}
+	},
+	//change index
+	changeIndex: function(){
+		
+		var numItems = this.items.length,	//get the numbers of slider elements
+			newItem = this.currentIndex;
+		
+		if(this.random && numItems > 1){
+			do
+			{
+				newItem = Math.floor((Math.random()*numItems));
+				
+				if(newItem == this.currentIndex)
+				{
+					newItem = Math.floor((Math.random()*numItems));	
+				}
+			}
+			while(newItem == this.currentIndex)
+			
+			this.lastIndex = this.currentIndex;
+			this.currentIndex = newItem;
+			this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
+			this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
 		}
-	}
+	}	
 });
