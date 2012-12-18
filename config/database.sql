@@ -32,6 +32,7 @@ CREATE TABLE `tl_content` (
   `nSNews` int(10) unsigned NOT NULL default '0',
   `nSMooSwipe` char(1) NOT NULL default '1',
   `nSMouseOver` char(1) NOT NULL default '',
+  `nSRandomStartPoint` char(1) NOT NULL default '',
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 

@@ -75,6 +75,7 @@ class ContentNoobSlideEnd extends ContentElement
 			$this->Template->enableSlider = true;
 			$this->Template->articleId = $GLOBALS['NOOBSLIDE'][$this->pid]['id'];
 			$this->Template->startPoint = $GLOBALS['NOOBSLIDE'][$this->pid]['startPoint'];
+			$this->Template->randomStartPoint = $GLOBALS['NOOBSLIDE'][$this->pid]['randomStartPoint'];			
 			$this->Template->jsElements = implode(',',$arrJsElements);
 			$this->Template->countElements = $GLOBALS['NOOBSLIDE'][$this->pid]['sections'];
 			$this->Template->nSPlayAuto = $GLOBALS['NOOBSLIDE'][$this->pid]['nSPlayAuto'] ? 1 : 0;

@@ -33,7 +33,7 @@
  * Palettes
  */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] 			= 'nSEffectsExtended';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_setup'] 		= '{type_legend},type,headline; {nSSettings_legend},nSMode,nSElemClass,nSElemWidth,nSElemHeight;{nSEffects_legend},nSEffectsExtended;{nSPlay_legend},nSEffectInterval,nSStartPoint,nSPlayAuto;{nSControls_legend},nSControls,nSMooSwipe,nSControlButtons,nSSideButtons,nSMouseOver;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_setup'] 		= '{type_legend},type,headline; {nSSettings_legend},nSMode,nSElemClass,nSElemWidth,nSElemHeight;{nSEffects_legend},nSEffectsExtended;{nSPlay_legend},nSEffectInterval,nSStartPoint,nSRandomStartPoint,nSPlayAuto;{nSControls_legend},nSControls,nSMooSwipe,nSControlButtons,nSSideButtons,nSMouseOver;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},nsUrl,nSTarget;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_section']		= '{type_legend},type;{image_legend},nSBackground;{link_legend:hide},nSUrl,nSTarget;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_news']			= '{type_legend},type;{include_legend},nSNews;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
@@ -135,6 +135,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSStartPoint'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSStartPoint'],
   'inputType'               => 'text',
   'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50')
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['nSRandomStartPoint'] = array
+(
+  'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSRandomStartPoint'],
+  'inputType'				=> 'checkbox',
+  'eval'              		=> array('tl_class'=>'w50')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSControls'] = array

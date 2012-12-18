@@ -44,6 +44,7 @@ $GLOBALS['TL_LANG']['tl_content']['nSEffectTransition']		= array('Bewegung', 'si
 $GLOBALS['TL_LANG']['tl_content']['nSEffectEase'] 			= array('Ease', 'Damit wird der Effekt weicher dargestellt.');
 $GLOBALS['TL_LANG']['tl_content']['nSPlayAuto'] 			= array('Autoplay aktivieren');
 $GLOBALS['TL_LANG']['tl_content']['nSStartPoint'] 			= array('Startpunkt des Noobslide', 'Angabe des Startelements. (0 ist das erste Element)');
+$GLOBALS['TL_LANG']['tl_content']['nSRandomStartPoint']		= array('zufälligen Startpunkt aktivieren');
 $GLOBALS['TL_LANG']['tl_content']['nSEffectInterval'] 		= array('Einblendungsdauer', 'Angabe in Millisekunden.');
 $GLOBALS['TL_LANG']['tl_content']['nSEffectDuration'] 		= array('Effektdauer', 'Angabe in Millisekunden.');
 $GLOBALS['TL_LANG']['tl_content']['nSControls'] 			= array('Navigation aktivieren', 'Navigation ein-/ausblenden'); 
