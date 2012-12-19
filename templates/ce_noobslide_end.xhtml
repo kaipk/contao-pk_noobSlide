@@ -21,7 +21,7 @@ window.addEvent('domready', function() {
 <?php endif; ?>
 		size: <?php if($this->mode_src == 'vertical'): echo $this->height;?><?php else: ?><?php echo $this->width;?><?php endif;?>,
 <?php if($this->startPoint && !$this->randomStartPoint): ?>
-		startItem: <?php echo $this->startPoint-1; ?>,
+		startItem: <?php echo $this->startPoint; ?>,
 <?php endif; ?>
 <?php if($this->randomStartPoint && $this->startPoint == 0): ?>
 		startItem: Math.floor((Math.random()*<?php echo $this->countElements; ?>)),
