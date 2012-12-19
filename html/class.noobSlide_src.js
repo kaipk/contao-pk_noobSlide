@@ -129,13 +129,13 @@ var noobSlide = new Class({
 		{
 			//Prepare Fading
 			this.orderItems(params);
-			this.fading((params.startItem||0),true,true);
+			this.fading((params.startItem||0),true,true,true);
 		}
 		else
 		{
 			//original Sliding
 			this.fx = new Fx.Tween(this.box,$extend((params.fxOptions||{duration:500,wait:false}),{property:this.modes[this.mode][0]}));
-			this.walk((params.startItem||0),true,true);
+			this.walk((params.startItem||0),true,true,true);
 		}
 	},
 		
@@ -196,6 +196,7 @@ var noobSlide = new Class({
 	},
 
 	next: function(manual){
+		
 		if(this.fade)
 		{
 			this.fading((this.currentIndex<this.items.length-1 ? this.currentIndex+1 : 0),manual);
@@ -216,14 +217,14 @@ var noobSlide = new Class({
 	stop: function(){
 		$clear(this._play);
 	},
-	walk: function(item,manual,noFx){
+	walk: function(item,manual,noFx,first){
 		
-		if(this.random && !manual)
+		if(this.random && !manual || first)
 		{
 			this.changeIndex();
 		}
 		
-		if(!this.random || manual)
+		if(!this.random || manual && !first)
 		{
 			this.currentIndex=item;
 			this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
@@ -245,14 +246,14 @@ var noobSlide = new Class({
 		}
 	},
 	//Fading
-	fading: function(item,manual,noFx){
+	fading: function(item,manual,noFx,first){
 			
-			if(this.random && !manual)
+			if(this.random && !manual || first)
 			{
 				this.changeIndex();
 			}
 			
-			if(!this.random || manual)
+			if(!this.random || manual && !first)
 			{
 				this.lastIndex=this.currentIndex;
 				this.currentIndex=item;
@@ -265,12 +266,20 @@ var noobSlide = new Class({
 			if(manual){
 				this.stop();
 			}
-			if(!noFx){
-				// fade in and show active element
+			
+			if(noFx){
+				$$(this.divElements)[this.currentIndex].fade('show');
+				$$(this.divElements)[this.currentIndex].setStyle('display', 'block');	
+			} else {
 				$$(this.divElements)[this.currentIndex].fade('in');
 				$$(this.divElements)[this.currentIndex].setStyle('display', 'block');
-				$$(this.divElements)[this.lastIndex].fade('out');
+				
+				if(this.currentIndex != this.lastIndex)
+				{
+					$$(this.divElements)[this.lastIndex].fade('out');
+				}
 			}
+			
 			if(manual && this.autoPlay){
 				this.play(this.interval,'next',true);
 			}
