@@ -11,6 +11,7 @@ The pk_noobSlide module is a mootools based application to integrate multiple co
 <li>Contao Newsmodule support</li>
 <li>Random startpoint</li>
 <li>Random item order</li>
+<li>include slider as module</li>
 </ul>
 
 <h2>How to use</h2>
