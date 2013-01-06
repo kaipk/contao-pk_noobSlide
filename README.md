@@ -1,4 +1,4 @@
-<h1>pk_Noobslide fot the CMS Contao</h1>
+<h1>pk_Noobslide for the CMS Contao</h1>
 
 The pk_noobSlide module is a mootools based application to integrate multiple content via content-slider.
 
