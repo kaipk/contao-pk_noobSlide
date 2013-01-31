@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
  * version 3 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
@@ -71,7 +71,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemWidth'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemWidth'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
@@ -79,7 +79,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemHeight'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectsExtended'] = array
@@ -89,7 +89,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectsExtended'] = array
   'inputType'					=> 'checkbox',
   'eval'						=> array('submitOnChange'=>true, 'tl_class'=>'clr')
 );
-	
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectTransition'] = array
 (
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSEffectTransition'],
@@ -226,7 +226,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSMouseOver'] = array
 
 class tl_content_noobSlide extends Backend
 {
-	
+
 	/**
 	 * Return all news list modules
 	 *
@@ -238,12 +238,12 @@ class tl_content_noobSlide extends Backend
 	{
 		$arrModules = array();
 		$objModules = $this->Database->execute("SELECT * FROM tl_module WHERE type='newslist'");
-		
+
 		while( $objModules->next() )
 		{
 			$arrModules[$objModules->id] = $objModules->name;
 		}
-		
+
 		return $arrModules;
 	}
 }
