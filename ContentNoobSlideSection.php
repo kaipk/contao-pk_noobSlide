@@ -104,7 +104,7 @@ class ContentNoobSlideSection extends ContentElement
 		{
 			if (is_file(TL_ROOT . '/' . $this->nSBackground))
 			{
-				$this->Template->background = ('background-image:url(' . $this->nSBackground . ');');
+				$this->Template->background = ('background-image:url(\'' . $this->nSBackground . '\');');
 			}
 		}
 		else
@@ -113,7 +113,7 @@ class ContentNoobSlideSection extends ContentElement
 
 			if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
 			{
-				$this->Template->background = ('background-image:url(' . $objModel->path . ');');
+				$this->Template->background = ('background-image:url(\'' . $objModel->path . '\');');
 			}
 		}
 
