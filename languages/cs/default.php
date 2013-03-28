@@ -2,12 +2,12 @@
 /**
  * TL_ROOT/system/modules/pk_noobSlide/languages/cs/default.php 
  * 
- * Contao extension: pk_noobSlide 1.1.0 stable 
+ * Contao extension: pk_noobSlide 1.1.4 stable 
  * Czech translation file 
  * 
  * Copyright : &copy; 2012 KAIPO EDV IT Ges.m.b.H 
  * License   : LGPL 
- * Author    : Philipp Kaiblinger (philipp.kaiblinger), http://www.kaipo.at 
+ * Author    : KAIPO EDV IT Ges.m.b.H (philipp.kaiblinger), http://www.kaipo.at 
  * Translator: Tomas Petrlik (frogzone), www.frogzone.cz 
  * 
  * This file was created automatically be the Contao extension repository translation module.

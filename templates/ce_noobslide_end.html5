@@ -1,5 +1,43 @@
 </div><?php if ($this->closeLink): ?></a><?php else: ?></section><?php endif; ?>
 </div></section>
+
+<style>
+.ce_noobSlide_preview_container
+{
+	height:350px;
+	position:absolute;
+	bottom:-100px;
+	z-index:100;
+	overflow:hidden;
+}
+
+.ce_noobSlide_preview {
+	float:left;
+	vertical-align: text-top;
+	padding-right: 5px;
+}
+.ce_noobSlide_previews {
+	overflow:hidden;
+	left: 0px;
+}
+
+
+.ce_noobSlide_previous_preview span
+{
+	left: 0;
+    top: 798px;
+}
+
+.ce_noobSlide_next_preview span
+{
+	background: url("http://launch.bikeprofix.de/tl_files/layoutv2/bg_galerie_next.png") no-repeat scroll left top transparent;
+	position:absolute;
+	right: 0;
+    top: 798px;
+}
+</style>
+
+
 <?php if($this->enableSlider): ?>
 <script>
 <?php if($this->Controls): ?>
@@ -19,6 +57,15 @@ window.addEvent('domready', function() {
 		divElements: document.getElements('#<?php echo $this->articleId; ?> .ce_noobSlide_section'),
 <?php endif; ?>
 		size: <?php if($this->mode_src == 'vertical'): echo $this->height;?><?php else: ?><?php echo $this->width;?><?php endif;?>,
+<?php if($this->startPoint && !$this->randomStartPoint): ?>
+		startItem: <?php echo $this->startPoint; ?>,
+<?php endif; ?>
+<?php if($this->randomStartPoint && $this->startPoint == 0): ?>
+		startItem: Math.floor((Math.random()*<?php echo $this->countElements; ?>)),
+<?php endif; ?>
+<?php if($this->randomSlides && !$this->randomStartPoint): ?>
+		random: true,
+<?php endif; ?>
 <?php if($this->ControlButtons OR $this->SideButtons): ?>
 <?php if($this->SideButtons): ?>
 		nextBtn: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_next', html:'<span><?php echo $this->next; ?></span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after'),
@@ -26,10 +73,10 @@ window.addEvent('domready', function() {
 <?php endif; ?>
 		addButtons: {<?php if($this->ControlButtons): ?>play: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_play', html:'<span>Play</span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after'), stop: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_stop', html:'<span>Stop</span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after'), playback: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_playback', html:'<span><?php echo $this->playbackLabel; ?></span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after')<?php endif; ?><?php if($this->ControlButtons && $this->SideButtons): ?>, <?php endif;?><?php if($this->SideButtons): ?>previous: document.getElements('#<?php echo $this->articleId; ?> .ce_noobSlide_previous span'), next: document.getElements('#<?php echo $this->articleId; ?> .ce_noobSlide_next span')<?php endif; ?>},
 <?php endif; ?>
-    	interval: <?php echo $this->interval; ?>, 
+    	interval: <?php echo $this->interval; ?>,
     	fadeDuration: <?php echo $this->effectDuration; ?>,
     	autoPlay: <?php echo $this->nSPlayAuto; ?><?php if($this->effectActive): ?>, <?php endif; ?>
-    	
+
 <?php if($this->effectActive): ?>
 		fxOptions: {
       	duration : <?php echo $this->effectDuration; ?>,
@@ -48,18 +95,23 @@ window.addEvent('domready', function() {
     		previewHandles.removeClass('active');
 			previewHandles[this.currentIndex].addClass('active');
 <?php endif; ?>
+<?php if($this->enablePreviewSlider): ?>
+			currentCol = (this.currentIndex >= <?php echo $this->PreviewSliderelementsPerPage; ?> ? Math.floor(this.currentIndex / 4) : 0);
+			if(noobslidePreview<?php echo $this->PreviewSlidersliderId; ?>)
+				noobslidePreview<?php echo $this->PreviewSlidersliderId; ?>.walk(currentCol);
+<?php endif; ?>
     	}
 <?php endif; ?>
 <?php if($this->Controls): ?>
 		,
-		handles: $$('#<?php echo $this->articleId; ?> .ce_noobSlide_controls')       
+		handles: $$('#<?php echo $this->articleId; ?> .ce_noobSlide_controls')
 <?php endif; ?>
 <?php if($this->previews): ?>
  		,
  		previewItems: $$('#<?php echo $this->articleId; ?> .ce_noobSlide_preview')
 <?php endif; ?>
  	});
-<?php if($this->nSMouseOver): ?> 	
+<?php if($this->nSMouseOver): ?>
 //add mousein/out behaviors for all slides
 document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container').addEvents({
 'mouseover':function(){
@@ -69,7 +121,7 @@ noobslide<?php echo $this->sliderId; ?>.stop();
 noobslide<?php echo $this->sliderId; ?>.play(<?php echo $this->interval; ?>,"next",false);
 }
 });
-<?php endif; ?>	
+<?php endif; ?>
 <?php if($this->nSMooSwipe): ?>
 new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide_container'), {
 		onSwipeLeft: function() {
@@ -79,9 +131,47 @@ new MooSwipe(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide
 			noobslide<?php echo $this->sliderId; ?>.previous(this);
 		}
 	});
-<?php endif; ?>	
+<?php endif; ?>
 });
 </script>
-<?php endif; ?>		 	
-		
-		
+<?php endif; ?>
+
+<?php if($this->enablePreviewSlider): ?>
+<script>
+var noobslidePreview<?php echo $this->PreviewSlidersliderId; ?>;
+window.addEvent('domready', function() {
+	noobslidePreview<?php echo $this->PreviewSlidersliderId; ?> = new noobSlide({
+		box: document.getElement('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide_previews'),
+		items: [<?php echo $this->PreviewSliderjsElements; ?>],
+		<?php echo $this->PreviewSlidermode; ?>,
+		size: <?php echo $this->PreviewSliderwidth;?>,
+		perRow: <?php echo $this->PreviewSliderelementsPerPage; ?>,
+		startItem: 0,
+<?php if($this->PreviewSliderSideButtons): ?>
+		nextBtn: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_next_preview', html:'<span><?php echo $this->next; ?></span>'}).inject(document.getElement('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide'), 'after'),
+	    prevBtn: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_previous_preview', html:'<span><?php echo $this->previous; ?></span>'}).inject(document.getElement('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide'), 'after'),
+<?php endif; ?>
+		addButtons: {<?php if($this->PreviewSliderSideButtons): ?>previous: document.getElements('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide_previous_preview span'), next: document.getElements('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide_next_preview span')<?php endif; ?>},
+    	interval: <?php echo $this->PreviewSliderinterval; ?>,
+    	fadeDuration: <?php echo $this->PreviewSlidereffectDuration; ?>,
+<?php if($this->PreviewSlidereffectActive): ?>
+		fxOptions: {
+      	duration : <?php echo $this->PreviewSlidereffectDuration; ?>,
+      	transition: Fx.Transitions.<?php echo $this->PreviewSlidereffect; ?>,
+      	wait: false
+    	}
+<?php endif; ?>
+	});
+<?php if($this->PreviewSlidernSMooSwipe): ?>
+new MooSwipe(document.getElement('#<?php echo $this->PreviewSliderarticleId; ?> .ce_noobSlide_previews'), {
+		onSwipeLeft: function() {
+			noobslidePreview<?php echo $this->PreviewSlidersliderId; ?>.next(this);
+	  	},
+		onSwipeRight: function() {
+			noobslidePreview<?php echo $this->PreviewSlidersliderId; ?>.previous(this);
+		}
+	});
+<?php endif; ?>
+});
+</script>
+<?php endif; ?>

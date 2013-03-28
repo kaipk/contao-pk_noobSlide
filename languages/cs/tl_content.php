@@ -2,12 +2,12 @@
 /**
  * TL_ROOT/system/modules/pk_noobSlide/languages/cs/tl_content.php 
  * 
- * Contao extension: pk_noobSlide 1.1.0 stable 
+ * Contao extension: pk_noobSlide 1.1.4 stable 
  * Czech translation file 
  * 
  * Copyright : &copy; 2012 KAIPO EDV IT Ges.m.b.H 
  * License   : LGPL 
- * Author    : Philipp Kaiblinger (philipp.kaiblinger), http://www.kaipo.at 
+ * Author    : KAIPO EDV IT Ges.m.b.H (philipp.kaiblinger), http://www.kaipo.at 
  * Translator: Tomas Petrlik (frogzone), www.frogzone.cz 
  * 
  * This file was created automatically be the Contao extension repository translation module.
@@ -48,6 +48,10 @@ $GLOBALS['TL_LANG']['tl_content']['nSBackground']['0'] = "Obrázek na pozadí";
 $GLOBALS['TL_LANG']['tl_content']['nSBackground']['1'] = "Každá sekce může obsahovat obrázek na pozadí.";
 $GLOBALS['TL_LANG']['tl_content']['nSNews']['0'] = "Archiv novinek";
 $GLOBALS['TL_LANG']['tl_content']['nSNews']['1'] = "Prosím, vyberte archiv novinek.";
+$GLOBALS['TL_LANG']['tl_content']['nSMooSwipe']['0'] = "Podpora Smartphone";
+$GLOBALS['TL_LANG']['tl_content']['nSMooSwipe']['1'] = "Umožňuje snadný přístup pro iOS a další dotyková zařízení.";
+$GLOBALS['TL_LANG']['tl_content']['nSMouseOver']['0'] = "Mouseover/out";
+$GLOBALS['TL_LANG']['tl_content']['nSMouseOver']['1'] = "Na mouseover jezdec zastaví. na mouseOut jezdec přejde na další prvek.";
 $GLOBALS['TL_LANG']['tl_content']['nSSettings_legend'] = "Nastavení";
 $GLOBALS['TL_LANG']['tl_content']['nSEffects_legend'] = "Efekty";
 $GLOBALS['TL_LANG']['tl_content']['nSPlay_legend'] = "Nastavení přechodového efektu";

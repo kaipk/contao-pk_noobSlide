@@ -21,3 +21,12 @@ Version 1.1.3 stable (2012-09-07)
 - mooswipe disable option
 - class first last in 1st preview element
 - add mousein/out behaviors for all slides
+
+Version 1.1.4 stable (2012-12-14)
+- Contao 3 support
+- startPoint bug: starting point was not considered
+- feature: random starting point, random slides
+
+Version 1.1.5 stable (2013-01-31)
+- fixed: background-image was not displayed in contao3
+- fixed: element "NoobSlider settings" - CSS problem using Google Chrome

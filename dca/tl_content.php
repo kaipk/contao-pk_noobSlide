@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
  * version 3 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
@@ -33,7 +33,8 @@
  * Palettes
  */
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] 			= 'nSEffectsExtended';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_setup'] 		= '{type_legend},type,headline; {nSSettings_legend},nSMode,nSElemClass,nSElemWidth,nSElemHeight;{nSEffects_legend},nSEffectsExtended;{nSPlay_legend},nSEffectInterval,nSStartPoint,nSPlayAuto;{nSControls_legend},nSControls,nSMooSwipe,nSControlButtons,nSSideButtons,nSMouseOver;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_setup'] 		= '{type_legend},type,headline; {nSSettings_legend},nSMode,nSElemClass,nSElemWidth,nSElemHeight;{nSEffects_legend},nSEffectsExtended;{nSPlay_legend},nSEffectInterval,nSStartPoint,nSRandomStartPoint,nSPlayAuto,nSRandomSlides;{nSControls_legend},nSControls,nSMooSwipe,nSControlButtons,nSSideButtons,nSMouseOver;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_preview_setup'] 		= '{type_legend},type,headline; {nSSettings_legend},nSElemClass,nSElemWidth,nSElemHeight,nSPreviewElementsPerPage;{nSEffects_legend},nSEffectsExtended;{nSPlay_legend},nSEffectInterval;{nSControls_legend},nSMooSwipe,nSSideButtons;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_preview']		= '{type_legend},type,headline;{text_legend},text;{image_legend},addImage;{link_legend:hide},nsUrl,nSTarget;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_section']		= '{type_legend},type;{image_legend},nSBackground;{link_legend:hide},nSUrl,nSTarget;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['noobSlide_news']			= '{type_legend},type;{include_legend},nSNews;{protected_legend:hide},protected;{expert_legend:hide},guests,start,stop,cssID,space';
@@ -71,7 +72,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemWidth'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemWidth'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
@@ -79,7 +80,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemHeight'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['nSPreviewElementsPerPage'] = array
+(
+  'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSPreviewElementsPerPage'],
+  'inputType'               => 'text',
+  'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectsExtended'] = array
@@ -89,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectsExtended'] = array
   'inputType'					=> 'checkbox',
   'eval'						=> array('submitOnChange'=>true, 'tl_class'=>'clr')
 );
-	
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectTransition'] = array
 (
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSEffectTransition'],
@@ -135,6 +143,20 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSStartPoint'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSStartPoint'],
   'inputType'               => 'text',
   'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50')
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['nSRandomStartPoint'] = array
+(
+  'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSRandomStartPoint'],
+  'inputType'				=> 'checkbox',
+  'eval'              		=> array('tl_class'=>'w50')
+);
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['nSRandomSlides'] = array
+(
+  'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSRandomSlides'],
+  'inputType'				=> 'checkbox',
+  'eval'              		=> array('tl_class'=>'w50')
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSControls'] = array
@@ -212,7 +234,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSMouseOver'] = array
 
 class tl_content_noobSlide extends Backend
 {
-	
+
 	/**
 	 * Return all news list modules
 	 *
@@ -224,12 +246,12 @@ class tl_content_noobSlide extends Backend
 	{
 		$arrModules = array();
 		$objModules = $this->Database->execute("SELECT * FROM tl_module WHERE type='newslist'");
-		
+
 		while( $objModules->next() )
 		{
 			$arrModules[$objModules->id] = $objModules->name;
 		}
-		
+
 		return $arrModules;
 	}
 }

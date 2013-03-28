@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation, either
  * version 3 of the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this program. If not, please visit the Free
  * Software Foundation website at <http://www.gnu.org/licenses/>.
@@ -27,8 +27,8 @@
  * @license    http://opensource.org/licenses/lgpl-3.0.html
  * @version    $Id
  */
- 
- 
+
+
 class ContentNoobSlideEnd extends ContentElement
 {
 	/**
@@ -36,8 +36,8 @@ class ContentNoobSlideEnd extends ContentElement
 	 * @var string
 	 */
 	protected $strTemplate = 'ce_noobslide_end';
-	
-	
+
+
 	public function generate()
 	{
 		if (TL_MODE == 'BE')
@@ -46,39 +46,42 @@ class ContentNoobSlideEnd extends ContentElement
 			$objTemplate->wildcard = '### NOOBSLIDE - END ###';
 			return $objTemplate->parse();
 		}
-		
+
 		$time = time();
 		if (($this->start > 0 && $this->start > $time) || ($this->stop > 0 && $this->stop < $time))
 		{
 			return '';
 		}
-		
+
 		return parent::generate();
 	}
-	
-	
+
+
 	protected function compile()
 	{
-		
+
 		$this->Template->enableSlider = false;
+		$this->Template->enablePreviewSlider = false;
 		$this->Template->closeLink = $GLOBALS['NOOBSLIDE'][$this->pid]['sectionLink'] ? true : false;
 		$this->Template->previews = $GLOBALS['NOOBSLIDE'][$this->pid]['previews'] > 0 ? true : false;
-		
+
 		//generate elements
 		$arrJsElements = array();
 		for ($i = 0; $i < $GLOBALS['NOOBSLIDE'][$this->pid]['sections']; $i++) {
-	    	$arrJsElements[] = $i;	
+	    	$arrJsElements[] = $i;
 		}
-		
+
 		if ($GLOBALS['NOOBSLIDE'][$this->pid]['sections'] > 1)
 		{
 			$this->Template->enableSlider = true;
 			$this->Template->articleId = $GLOBALS['NOOBSLIDE'][$this->pid]['id'];
 			$this->Template->startPoint = $GLOBALS['NOOBSLIDE'][$this->pid]['startPoint'];
+			$this->Template->randomStartPoint = $GLOBALS['NOOBSLIDE'][$this->pid]['randomStartPoint'];
+			$this->Template->randomSlides = $GLOBALS['NOOBSLIDE'][$this->pid]['randomSlides'];
 			$this->Template->jsElements = implode(',',$arrJsElements);
 			$this->Template->countElements = $GLOBALS['NOOBSLIDE'][$this->pid]['sections'];
 			$this->Template->nSPlayAuto = $GLOBALS['NOOBSLIDE'][$this->pid]['nSPlayAuto'] ? 1 : 0;
-			$this->Template->interval = $GLOBALS['NOOBSLIDE'][$this->pid]['interval']; 
+			$this->Template->interval = $GLOBALS['NOOBSLIDE'][$this->pid]['interval'];
 			$this->Template->effectActive = $GLOBALS['NOOBSLIDE'][$this->pid]['effectActive'];
 			$this->Template->effect = $GLOBALS['NOOBSLIDE'][$this->pid]['effect'];
 			$this->Template->effectDuration = $GLOBALS['NOOBSLIDE'][$this->pid]['effectDuration'];
@@ -93,27 +96,53 @@ class ContentNoobSlideEnd extends ContentElement
 			$this->Template->stopLabel = $GLOBALS['TL_LANG']['MSC']['ControlButtons'][1];
 			$this->Template->playLabel = $GLOBALS['TL_LANG']['MSC']['ControlButtons'][2];
 			$this->Template->previous = $GLOBALS['TL_LANG']['MSC']['previous'];
-			$this->Template->next = $GLOBALS['TL_LANG']['MSC']['next'];		
+			$this->Template->next = $GLOBALS['TL_LANG']['MSC']['next'];
 			$this->Template->mode_src = $GLOBALS['NOOBSLIDE'][$this->pid]['mode'];
 			$this->Template->nSMooSwipe = $GLOBALS['NOOBSLIDE'][$this->pid]['nSMooSwipe'];
 			$this->Template->nSMouseOver = $GLOBALS['NOOBSLIDE'][$this->pid]['nSMouseOver'];
-			
+
 			switch( $GLOBALS['NOOBSLIDE'][$this->pid]['mode'] )
 			{
 				case 'fade':
 					$this->Template->mode = 'fade:\'true\'';
 					break;
-					
+
 				case 'vertical':
 					$this->Template->mode = 'mode:\'vertical\'';
 					break;
-					
+
 				case 'horizontal':
 				default:
 					$this->Template->mode = 'mode:\'horizontal\'';
 					break;
 			}
-		}	
+		}
+
+		if($GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['sections'] > 1)
+		{
+			//generate elements
+			$arrJsPreviewElements = array();
+			for ($i = 0; $i < round(($GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['sections'] / $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['nSPreviewElementsPerPage']),0, PHP_ROUND_HALF_UP); $i++) {
+	    		$arrJsPreviewElements[] = $i;
+	    	}
+
+	    	$this->Template->enablePreviewSlider = true;
+			$this->Template->PreviewSliderarticleId = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['id'];
+			$this->Template->PreviewSliderjsElements = implode(',',$arrJsPreviewElements);
+			$this->Template->PreviewSliderelementsPerPage = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['nSPreviewElementsPerPage'];
+			$this->Template->PreviewSliderinterval = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['interval'];
+			$this->Template->PreviewSlidereffectActive = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['effectActive'];
+			$this->Template->PreviewSlidereffect = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['effect'];
+			$this->Template->PreviewSlidereffectDuration = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['effectDuration'];
+			$this->Template->PreviewSliderSideButtons = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['SideButtons'];
+			$this->Template->PreviewSlidernoobHandlesId = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['noobHandlesId'];
+			$this->Template->PreviewSlidernoobHandlesId = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['noobHandlesId'];
+			$this->Template->PreviewSlidersliderId = $this->pid;
+			$this->Template->PreviewSliderwidth = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['width'];
+			$this->Template->PreviewSliderheight = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['height'];
+			$this->Template->PreviewSlidermode = 'mode:\'horizontal\'';
+			$this->Template->PreviewSlidernSMooSwipe = $GLOBALS['NOOBSLIDE_PREVIEW_SLIDER'][$this->pid]['nSMooSwipe'];
+
+		}
 	}
 }
-

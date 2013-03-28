@@ -20,6 +20,15 @@ window.addEvent('domready', function() {
 		divElements: document.getElements('#<?php echo $this->articleId; ?> .ce_noobSlide_section'),
 <?php endif; ?>
 		size: <?php if($this->mode_src == 'vertical'): echo $this->height;?><?php else: ?><?php echo $this->width;?><?php endif;?>,
+<?php if($this->startPoint && !$this->randomStartPoint): ?>
+		startItem: <?php echo $this->startPoint; ?>,
+<?php endif; ?>
+<?php if($this->randomStartPoint && $this->startPoint == 0): ?>
+		startItem: Math.floor((Math.random()*<?php echo $this->countElements; ?>)),
+<?php endif; ?>
+<?php if($this->randomSlides && !$this->randomStartPoint): ?>		
+		random: true,
+<?php endif; ?>
 <?php if($this->ControlButtons OR $this->SideButtons): ?>
 <?php if($this->SideButtons): ?>
 		nextBtn: new Element('a', {'class':'ce_noobSlide_button ce_noobSlide_next', html:'<span><?php echo $this->next; ?></span>'}).inject(document.getElement('#<?php echo $this->articleId; ?> .ce_noobSlide'), 'after'),
