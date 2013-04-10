@@ -30,3 +30,9 @@ Version 1.1.4 stable (2012-12-14)
 Version 1.1.5 stable (2013-01-31)
 - fixed: background-image was not displayed in contao3
 - fixed: element "NoobSlider settings" - CSS problem using Google Chrome
+
+Version 1.1.6 stable (2013-04-10)
+- fixed: added single quote to background-image url
+- added: show headlines in the backend, so the content elements can be differentiated
+- fixed: not using article alias anymore, instead using article id
+- added: next and previous links are now inside article div
