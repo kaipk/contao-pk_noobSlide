@@ -44,6 +44,7 @@ class ContentNoobSlideSection extends ContentElement
 		{
 			$objTemplate = new BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### NOOBSLIDE - SECTION ' . ++$GLOBALS['NOOBSLIDE'][$this->pid]['sections'] . ' ###';
+			$objTemplate->title = $this->headline;
 			return $objTemplate->parse();
 		}
 
