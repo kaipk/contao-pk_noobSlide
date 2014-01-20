@@ -1,14 +1,24 @@
 <?php
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2012 Leo Feyer
- * 
- * @package Pk_noobSlide
- * @link    http://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * Noobslider for Contao Open Source CMS
+ *
+ * Copyright (C) 2010-2014 KAIPO EDV IT Ges.m.b.H
+ *
+ * @author     Philipp Kaiblinger <philipp.kaiblinger@kaipo.at>
+ * @package    pk_noobslide
+ * @link       http://www.kaipo.at
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
+
+
+/**
+ * Register the namespaces
+ */
+ClassLoader::addNamespaces(array
+(
+	'PhilippKaiblinger',
+));
 
 
 /**
@@ -16,12 +26,12 @@
  */
 ClassLoader::addClasses(array
 (
-	'ContentNoobSlidePreview' => 'system/modules/pk_noobSlide/ContentNoobSlidePreview.php',
-	'ContentNoobSlideEnd'     => 'system/modules/pk_noobSlide/ContentNoobSlideEnd.php',
-	'ContentNoobSlideNews'    => 'system/modules/pk_noobSlide/ContentNoobSlideNews.php',
-	'ContentNoobSlideSetup'   => 'system/modules/pk_noobSlide/ContentNoobSlideSetup.php',
-	'ContentNoobSlideSection' => 'system/modules/pk_noobSlide/ContentNoobSlideSection.php',
-	'ModuleNoobSlideArticle'  => 'system/modules/pk_noobSlide/ModuleNoobSlideArticle.php',
+	'PhilippKaiblinger\noobSlide\ContentNoobSlidePreview' => 'system/modules/pk_noobSlide/elements/ContentNoobSlidePreview.php',
+	'PhilippKaiblinger\noobSlide\ContentNoobSlideEnd'     => 'system/modules/pk_noobSlide/elements/ContentNoobSlideEnd.php',
+	'PhilippKaiblinger\noobSlide\ContentNoobSlideNews'    => 'system/modules/pk_noobSlide/elements/ContentNoobSlideNews.php',
+	'PhilippKaiblinger\noobSlide\ContentNoobSlideSetup'   => 'system/modules/pk_noobSlide/elements/ContentNoobSlideSetup.php',
+	'PhilippKaiblinger\noobSlide\ContentNoobSlideSection' => 'system/modules/pk_noobSlide/elements/ContentNoobSlideSection.php',
+	'PhilippKaiblinger\noobSlide\ModuleNoobSlideArticle'  => 'system/modules/pk_noobSlide/modules/ModuleNoobSlideArticle.php',
 ));
 
 
@@ -30,9 +40,9 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'ce_noobslide_end'      => 'system/modules/pk_noobSlide/templates',
-	'ce_noobslide_preview'  => 'system/modules/pk_noobSlide/templates',
-	'ce_noobslide_section'  => 'system/modules/pk_noobSlide/templates',
-	'ce_noobslide_setup'    => 'system/modules/pk_noobSlide/templates',
-	'mod_noobslide_article' => 'system/modules/pk_noobSlide/templates',
+	'ce_noobslide_end'      => 'system/modules/pk_noobSlide/templates/elements',
+	'ce_noobslide_preview'  => 'system/modules/pk_noobSlide/templates/elements',
+	'ce_noobslide_section'  => 'system/modules/pk_noobSlide/templates/elements',
+	'ce_noobslide_setup'    => 'system/modules/pk_noobSlide/templates/elements',
+	'mod_noobslide_article' => 'system/modules/pk_noobSlide/templates/modules',
 ));

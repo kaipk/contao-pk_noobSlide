@@ -1,31 +1,14 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
+ * Noobslider for Contao Open Source CMS
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2010-2014 KAIPO EDV IT Ges.m.b.H
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  KAIPO EDV IT Ges.m.b.H 2010-2012
  * @author     Philipp Kaiblinger <philipp.kaiblinger@kaipo.at>
- * @package    NoobSlide
+ * @package    pk_noobslide
+ * @link       http://www.kaipo.at
  * @license    http://opensource.org/licenses/lgpl-3.0.html
- * @version    $Id
  */
 
 
@@ -56,14 +39,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSMode'] = array
   'inputType'               => 'radio',
   'options'                 => array('horicontal','vertical', 'fade'),
   'reference'               => &$GLOBALS['TL_LANG']['tl_content']['nSModeR'],
-  'eval'                    => array('tl_class'=>'w50')
+  'eval'                    => array('tl_class'=>'w50'),
+  'sql'						=> "varchar(64) NOT NULL default 'horicontal'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemClass'] = array
 (
-  'label' => &$GLOBALS['TL_LANG']['tl_content']['nSElemClass'],
-  'inputType' => 'text',
-  'eval' => array('tl_class'=>'w50')
+  'label' 					=> &$GLOBALS['TL_LANG']['tl_content']['nSElemClass'],
+  'inputType' 				=> 'text',
+  'eval' 					=> array('tl_class'=>'w50'),
+  'sql'						=> "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemWidth'] = array
@@ -71,7 +56,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemWidth'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemWidth'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12'),
+  'sql'						=> "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
@@ -79,15 +65,17 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSElemHeight'] = array
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSElemHeight'],
   'exclude'                 => true,
   'inputType'               => 'text',
-  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12')
+  'eval'                    => array("rgxp" => "numeric", "mandatory" => true, 'tl_class'=>'w50 m12'),
+  'sql'						=> "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectsExtended'] = array
 (
-  'label'						=> &$GLOBALS['TL_LANG']['tl_content']['nSEffectsExtended'],
-  'exclude'						=> true,
-  'inputType'					=> 'checkbox',
-  'eval'						=> array('submitOnChange'=>true, 'tl_class'=>'clr')
+  'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSEffectsExtended'],
+  'exclude'					=> true,
+  'inputType'				=> 'checkbox',
+  'eval'					=> array('submitOnChange'=>true, 'tl_class'=>'clr'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectTransition'] = array
@@ -96,7 +84,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectTransition'] = array
   'inputType'               => 'select',
   'options'                 => array('Quad', 'Cubic', 'Quart', 'Quint', 'Sine', 'Expo', 'Circ', 'Bounce', 'Back', 'Elastic'),
   'reference'               => &$GLOBALS['TL_LANG']['tl_content']['nSEffectTransition'],
-  'eval'                    => array('tl_class'=>'w50')
+  'eval'                    => array('tl_class'=>'w50'),
+  'sql'						=> "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectEase'] = array
@@ -106,123 +95,140 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectEase'] = array
   'inputType'               => 'radio',
   'options'                 => array('In', 'Out', 'InOut'),
   'reference'               => &$GLOBALS['TL_LANG']['tl_content']['nSEffectEase'],
-  'eval'                    => array('tl_class'=>'w50')
+  'eval'                    => array('tl_class'=>'w50'),
+  'sql'						=> "varchar(64) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSPlayAuto'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSPlayAuto'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectInterval'] = array
 (
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSEffectInterval'],
   'inputType'               => 'text',
-  'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50')
+  'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50'),
+  'sql'						=> "int(10) NOT NULL default '3000'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSEffectDuration'] = array
 (
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSEffectDuration'],
   'inputType'               => 'text',
-  'eval'                    => array('mandatory'=>true,'nospace'=>true, 'tl_class'=>'w50')
+  'eval'                    => array('mandatory'=>true,'nospace'=>true, 'tl_class'=>'w50'),
+  'sql'						=> "int(10) NOT NULL default '1000'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSStartPoint'] = array
 (
   'label'                   => &$GLOBALS['TL_LANG']['tl_content']['nSStartPoint'],
   'inputType'               => 'text',
-  'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50')
+  'eval'                    => array('mandatory'=>true, 'nospace'=>true, 'tl_class'=>'w50'),
+  'sql'						=> "int(10) NOT NULL default '0'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSRandomStartPoint'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSRandomStartPoint'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSRandomSlides'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSRandomSlides'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSControls'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSControls'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSMooSwipe'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSMooSwipe'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default '1'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSControlButtons'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSControlButtons'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSSideButtons'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSSideButtons'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSNews'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSNews'],
-  'exclude'			=> true,
-  'inputType'			=> 'select',
-  'options_callback'	=> array('tl_content_noobSlide', 'getNewsModules'),
-  'eval'				=> array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50')
+  'exclude'					=> true,
+  'inputType'				=> 'select',
+  'options_callback'		=> array('tl_content_noobSlide', 'getNewsModules'),
+  'eval'					=> array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+  'sql'						=> "int(10) unsigned NOT NULL default '0'"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSBackground'] = array
 (
-	'label'				=> &$GLOBALS['TL_LANG']['tl_content']['nSBackground'],
-	'exclude'			=> true,
-	'inputType'			=> 'fileTree',
-	'eval'				=> array('fieldType'=>'radio', 'files'=>true, 'filesOnly'=>true, 'extensions'=>'png,gif,jpg,jpeg', 'tl_class'=>'clr'),
+	'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSBackground'],
+	'exclude'				=> true,
+	'inputType'				=> 'fileTree',
+	'eval'					=> array('filesOnly'=>true, 'extensions'=>$GLOBALS['TL_CONFIG']['validImageTypes'], 'fieldType'=>'radio', 'tl_class'=>'clr'),
+	'sql'					=> "binary(16) NULL"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSUrl'] = array
 (
-	'label'				=> &$GLOBALS['TL_LANG']['MSC']['url'],
-	'exclude'			=> true,
-	'search'			=> true,
-	'inputType'			=> 'text',
-	'eval'				=> array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'),
+	'label'					=> &$GLOBALS['TL_LANG']['MSC']['url'],
+	'exclude'				=> true,
+	'search'				=> true,
+	'inputType'				=> 'text',
+	'eval'					=> array('rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'),
 	'wizard' => array
 	(
 		array('tl_content', 'pagePicker')
 	),
+	'sql'					=> "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSTarget'] = array
 (
-	'label'				=> &$GLOBALS['TL_LANG']['MSC']['target'],
-	'exclude'			=> true,
-	'inputType'			=> 'checkbox',
-	'eval'				=> array('tl_class'=>'w50 m12')
+	'label'					=> &$GLOBALS['TL_LANG']['MSC']['target'],
+	'exclude'				=> true,
+	'inputType'				=> 'checkbox',
+	'eval'					=> array('tl_class'=>'w50 m12'),
+	'sql'					=> "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['nSMouseOver'] = array
 (
   'label'					=> &$GLOBALS['TL_LANG']['tl_content']['nSMouseOver'],
   'inputType'				=> 'checkbox',
-  'eval'              		=> array('tl_class'=>'w50')
+  'eval'              		=> array('tl_class'=>'w50'),
+  'sql'						=> "char(1) NOT NULL default ''"
 );
+
 
 class tl_content_noobSlide extends Backend
 {

@@ -1,35 +1,24 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
+ * Noobslider for Contao Open Source CMS
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2010-2014 KAIPO EDV IT Ges.m.b.H
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  KAIPO EDV IT Ges.m.b.H 2010-2012
  * @author     Philipp Kaiblinger <philipp.kaiblinger@kaipo.at>
- * @package    NoobSlide
+ * @package    pk_noobslide
+ * @link       http://www.kaipo.at
  * @license    http://opensource.org/licenses/lgpl-3.0.html
- * @version    $Id
  */
 
 
-class ContentNoobSlideSetup extends ContentElement
+/**
+ * Namespace
+ */
+namespace PhilippKaiblinger\noobSlide;
+
+
+class ContentNoobSlideSetup extends \ContentElement
 {
 
 	/**
@@ -43,7 +32,7 @@ class ContentNoobSlideSetup extends ContentElement
 	{
 		if (TL_MODE == 'BE')
 		{
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### NOOBSLIDE - SETUP ###';
 			return $objTemplate->parse();
 		}
@@ -71,12 +60,12 @@ class ContentNoobSlideSetup extends ContentElement
 
 	protected function compile()
 	{
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/html/class.noobSlide.packed.js';
-		$GLOBALS['TL_CSS'][] = 'system/modules/pk_noobSlide/html/noobSlide.css';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/assets/class.noobSlide.packed.js';
+		$GLOBALS['TL_CSS'][] = 'system/modules/pk_noobSlide/assets/noobSlide.css';
 
 		if($this->nSMooSwipe)
 		{
-			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/html/class.MooSwipe.packed.js';
+			$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/pk_noobSlide/assets/class.MooSwipe.packed.js';
 		}
 
 		$GLOBALS['NOOBSLIDE'][$this->pid]['mode'] = $this->nSMode;

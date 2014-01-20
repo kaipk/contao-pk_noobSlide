@@ -2,6 +2,8 @@
 
 The pk_noobSlide module is a mootools based application to integrate multiple content via content-slider.
 
+This Version is only with Contao 3.2 compatible!
+
 <h2>Features</h2>
 <ul>
 <li>Based on mootools version 1.2 library, therefore compatible to any version > 2.7</li>
