@@ -36,3 +36,6 @@ Version 1.1.6 stable (2013-04-10)
 - added: show headlines in the backend, so the content elements can be differentiated
 - fixed: not using article alias anymore, instead using article id
 - added: next and previous links are now inside article div
+
+Version 2.0.0 stable (2014-01-20)
+- added: support for contao 3.2
