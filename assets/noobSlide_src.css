@@ -5,11 +5,15 @@
 
 .ce_noobSlide_container {
 	position:absolute;
+	margin-left:0 !important;
+	margin-right:0 !important;
 }
 
 .ce_noobSlide_section {
 	float:left;
 	vertical-align: text-top;
+	margin-left:0 !important;
+	margin-right:0 !important;
 }
 
 .ce_noobSlide_button {

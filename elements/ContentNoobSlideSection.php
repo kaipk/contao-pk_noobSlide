@@ -1,35 +1,24 @@
-<?php if (!defined('TL_ROOT')) die('You cannot access this file directly!');
+<?php
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
+ * Noobslider for Contao Open Source CMS
  *
- * Formerly known as TYPOlight Open Source CMS.
+ * Copyright (C) 2010-2014 KAIPO EDV IT Ges.m.b.H
  *
- * This program is free software: you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation, either
- * version 3 of the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this program. If not, please visit the Free
- * Software Foundation website at <http://www.gnu.org/licenses/>.
- *
- * PHP version 5
- * @copyright  KAIPO EDV IT Ges.m.b.H 2010-2012
  * @author     Philipp Kaiblinger <philipp.kaiblinger@kaipo.at>
- * @package    NoobSlide
+ * @package    pk_noobslide
+ * @link       http://www.kaipo.at
  * @license    http://opensource.org/licenses/lgpl-3.0.html
- * @version    $Id
  */
 
 
-class ContentNoobSlideSection extends ContentElement
+/**
+ * Namespace
+ */
+namespace PhilippKaiblinger\noobSlide;
+
+
+class ContentNoobSlideSection extends \ContentElement
 {
 	/**
 	 * Template
@@ -42,7 +31,7 @@ class ContentNoobSlideSection extends ContentElement
 	{
 		if (TL_MODE == 'BE')
 		{
-			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate = new \BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### NOOBSLIDE - SECTION ' . ++$GLOBALS['NOOBSLIDE'][$this->pid]['sections'] . ' ###';
 			$objTemplate->title = $this->headline;
 			return $objTemplate->parse();
@@ -100,23 +89,13 @@ class ContentNoobSlideSection extends ContentElement
 			$this->Template->last = true;
 		}
 
-		//background-image was not displayed in contao3 see ticket #8
-		if (version_compare(VERSION, '3.0', '<'))
-		{
-			if (is_file(TL_ROOT . '/' . $this->nSBackground))
-			{
-				$this->Template->background = ('background-image:url(\'' . $this->nSBackground . '\');');
-			}
-		}
-		else
-		{
-			$objModel = \FilesModel::findByPk($this->nSBackground);
+		$objFile = \FilesModel::findByUuid($this->nSBackground);
 
-			if ($objModel !== null && is_file(TL_ROOT . '/' . $objModel->path))
-			{
-				$this->Template->background = ('background-image:url(\'' . $objModel->path . '\');');
-			}
+		if ($objFile !== null && is_file(TL_ROOT . '/' . $objFile->path))
+		{
+			$this->Template->background = ('background-image:url(\'' . $objFile->path . '\');');
 		}
+
 
 		// Override the link target
 		if ($this->nSTarget)
