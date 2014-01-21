@@ -3,10 +3,10 @@ Author:
 	luistar15, <leo020588 [at] gmail.com>
 	Rainer Ilgen <raineri@gmx.net> Extention for Fading
 	Philipp Kaiblinger <philipp.kaiblinger@kaipo.at> Extention for Fading adapting for Contao CMS
-	
+
 License:
 	MIT License
- 
+
 Class
 	noobSlide (rev.03-11-10)
 	noobSlide Extention for Fading (rev. 23-10-08)
@@ -55,7 +55,7 @@ Properties:
 	interval: int
 	autoPlay: boolean
 	onWalk: function
-	
+
 Methods:
 	previous(manual): walk to previous item
 		manual: bolean | default:false
@@ -81,17 +81,17 @@ Requires:
 */
 var noobSlide = new Class({
 
-	initialize: function(params){	
+	initialize: function(params){
 		this.items = params.items;
 		this.mode = params.mode || 'horizontal';
 		this.fade = params.fade || false;
 		this.modes = {horizontal:['left','width'], vertical:['top','height']};
 		this.size = params.size || 240;
 		this.box = params.box.setStyle(this.modes[this.mode][1],(this.size*this.items.length)+'px');
-		this.divElements = params.divElements;		
+		this.divElements = params.divElements;
 		this.button_event = params.button_event || 'click';
 		this.handle_event = params.handle_event || 'click';
-		this.previewItems_event = params.previewItems_event || 'click'; 
+		this.previewItems_event = params.previewItems_event || 'click';
 		this.onWalk = params.onWalk || null;
 		this.currentIndex = null;
 		this.previousIndex = null;
@@ -101,17 +101,17 @@ var noobSlide = new Class({
 		this._play = null;
 		this.handles = params.handles || null;
 		this.previewItems = params.previewItems || null;
-		this.fadeDuration = params.fadeDuration; 
+		this.fadeDuration = params.fadeDuration;
 		this.random = params.random || false;
-		
+
 		if(this.handles){
 			this.addHandleButtons(this.handles, this.handle_event);
 		}
-		
+
 		if(this.previewItems){
 			this.addHandleButtons(this.previewItems, this.previewItems_event);
 		}
-		
+
 		this.buttons = {
 			previous: [],
 			next: [],
@@ -121,10 +121,10 @@ var noobSlide = new Class({
 		};
 		if(params.addButtons){
 			for(var action in params.addButtons){
-				this.addActionButtons(action, $type(params.addButtons[action])=='array' ? params.addButtons[action] : [params.addButtons[action]]);
+				this.addActionButtons(action, params.addButtons[action] instanceof Array ? params.addButtons[action] : [params.addButtons[action]]);
 			}
 		}
-		
+
 		if(this.fade)
 		{
 			//Prepare Fading
@@ -134,27 +134,27 @@ var noobSlide = new Class({
 		else
 		{
 			//original Sliding
-			this.fx = new Fx.Tween(this.box,$extend((params.fxOptions||{duration:500,wait:false}),{property:this.modes[this.mode][0]}));
+			this.fx = new Fx.Tween(this.box, Object.append((params.fxOptions||{duration:500,wait:false}),{property:this.modes[this.mode][0]}));
 			this.walk((params.startItem||0),true,true,true);
 		}
 	},
-		
+
 	//new function for Ordering the Items for Fading
 	orderItems: function() {
-		
+
 		for(i=0;i<this.items.length;i++)
-		{	
+		{
 			$$(this.divElements)[i].setStyle('position', 'absolute');
 			$$(this.divElements)[i].setStyle('left', '0px');
-			$$(this.divElements)[i].setStyle('z-index', i+1);			
-			
+			$$(this.divElements)[i].setStyle('z-index', i+1);
+
 			if(i>0)
 			{
 				$$(this.divElements)[i].fade('out');
 				// hidden inactive elements
 				$$(this.divElements)[i].setStyle('display', 'none');
 			}
-			
+
 		}
 	},
 
@@ -180,7 +180,7 @@ var noobSlide = new Class({
 				case 'playback': buttons[i].addEvent(this.button_event,this.play.pass([this.interval,'previous',false],this)); break;
 				case 'stop': buttons[i].addEvent(this.button_event,this.stop.create({bind:this})); break;
 			}
-			this.buttons[action].push(buttons[i]);		
+			this.buttons[action].push(buttons[i]);
 		}
 	},
 
@@ -196,7 +196,7 @@ var noobSlide = new Class({
 	},
 
 	next: function(manual){
-		
+
 		if(this.fade)
 		{
 			this.fading((this.currentIndex<this.items.length-1 ? this.currentIndex+1 : 0),manual);
@@ -215,15 +215,15 @@ var noobSlide = new Class({
 	},
 
 	stop: function(){
-		$clear(this._play);
+		clearTimeout(this._play);
 	},
 	walk: function(item,manual,noFx,first){
-		
+
 		if(this.random && !manual || first)
 		{
 			this.changeIndex();
 		}
-		
+
 		if(!this.random || manual && !first)
 		{
 			this.currentIndex=item;
@@ -247,12 +247,12 @@ var noobSlide = new Class({
 	},
 	//Fading
 	fading: function(item,manual,noFx,first){
-			
+
 			if(this.random && !manual || first)
 			{
 				this.changeIndex();
 			}
-			
+
 			if(!this.random || manual && !first)
 			{
 				this.lastIndex=this.currentIndex;
@@ -260,26 +260,26 @@ var noobSlide = new Class({
 				this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
 				this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
 			}
-			
+
 			$$(this.divElements)[this.currentIndex].set('tween', {duration: (this.fadeDuration ? this.fadeDuration : 500)});
-			
+
 			if(manual){
 				this.stop();
 			}
-			
+
 			if(noFx){
 				$$(this.divElements)[this.currentIndex].fade('show');
-				$$(this.divElements)[this.currentIndex].setStyle('display', 'block');	
+				$$(this.divElements)[this.currentIndex].setStyle('display', 'block');
 			} else {
 				$$(this.divElements)[this.currentIndex].fade('in');
 				$$(this.divElements)[this.currentIndex].setStyle('display', 'block');
-				
+
 				if(this.currentIndex != this.lastIndex)
 				{
 					$$(this.divElements)[this.lastIndex].fade('out');
 				}
 			}
-			
+
 			if(manual && this.autoPlay){
 				this.play(this.interval,'next',true);
 			}
@@ -289,26 +289,26 @@ var noobSlide = new Class({
 	},
 	//change index
 	changeIndex: function(){
-		
+
 		var numItems = this.items.length,	//get the numbers of slider elements
 			newItem = this.currentIndex;
-		
+
 		if(this.random && numItems > 1){
 			do
 			{
 				newItem = Math.floor((Math.random()*numItems));
-				
+
 				if(newItem == this.currentIndex)
 				{
-					newItem = Math.floor((Math.random()*numItems));	
+					newItem = Math.floor((Math.random()*numItems));
 				}
 			}
 			while(newItem == this.currentIndex)
-			
+
 			this.lastIndex = this.currentIndex;
 			this.currentIndex = newItem;
 			this.previousIndex = this.currentIndex + (this.currentIndex>0 ? -1 : this.items.length-1);
 			this.nextIndex = this.currentIndex + (this.currentIndex<this.items.length-1 ? 1 : 1-this.items.length);
 		}
-	}	
+	}
 });
